@@ -11,6 +11,12 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/coba', function () {
+    $HBD = [
+        "Happy Birthday sayang <3",
+        "Semoga sehat selalu :)",
+        "Semoga panjang umur, banyak rejeki :)",
+        "Semoga diberi kelancaran dalam semua hal :)"
+    ];
     $gambar1 = asset('gambar/coba1.jpg');
     $judul = 'Coba Page';
     $carousel = [
@@ -25,6 +31,7 @@ Route::get('/coba', function () {
         asset('gambar/coba5.jpeg'),
     ];
     return Inertia::render('coba', [
+        'HBD' => $HBD,
         'gambar1' => $gambar1,
         'judul' => $judul,
         'carousel' => $carousel,
