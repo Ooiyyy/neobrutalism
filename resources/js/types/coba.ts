@@ -5,4 +5,5 @@ export type coba = {
     carousel: string[];
     kartuUcapan: string;
     gambarMomen: string[];
+    love: string;
 }

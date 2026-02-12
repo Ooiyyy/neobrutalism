@@ -12,13 +12,13 @@ Route::get('/', function () {
 
 Route::get('/coba', function () {
     $HBD = [
-        "Happy Birthday sayang <3",
-        "Semoga sehat selalu :)",
-        "Semoga panjang umur, banyak rejeki :)",
-        "Semoga diberi kelancaran dalam semua hal :)"
+        "Happy Birthday sayang <3 |",
+        "Semoga sehat selalu :) |",
+        "Semoga panjang umur, banyak rejeki :) |",
+        "Semoga diberi kelancaran dalam semua hal :) |"
     ];
-    $gambar1 = asset('gambar/coba1.jpg');
-    $judul = 'Coba Page';
+    $gambar1 = asset('gambar/foto.jpeg');
+    $judul = "Selamat ulang tahun ke 19\nSayangkuu, Adinda Alfa Zahra";
     $carousel = [
         asset('gambar/coba2.jpeg'),
         asset('gambar/coba3.jpg'),
@@ -30,6 +30,7 @@ Route::get('/coba', function () {
         asset('gambar/coba4.jpg'),
         asset('gambar/coba5.jpeg'),
     ];
+    $love = asset('gambar/love.jpg');
     return Inertia::render('coba', [
         'HBD' => $HBD,
         'gambar1' => $gambar1,
@@ -37,6 +38,7 @@ Route::get('/coba', function () {
         'carousel' => $carousel,
         'kartuUcapan' => $kartuUcapan,
         'gambarMomen' => $gambarMomen,
+        'love' => $love
     ]);
 })->name('coba');
 
