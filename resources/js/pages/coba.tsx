@@ -1,3 +1,4 @@
+import { AutoSlider } from "@/components/ui/brutal/auto-slider";
 import { Button } from "@/components/ui/brutal/button";
 import { Card, CardContent } from "@/components/ui/brutal/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/brutal/carousel";
@@ -13,19 +14,21 @@ export default function Coba({ HBD, gambar1, judul, carousel, kartuUcapan, gamba
             </div>
             <div className="flex gap-[20px] flex-wrap mx-2 my-5">
                 <div className="grow flex justify-center">
-                    <img src={gambar1} alt="gambar1" className="w-full h-auto animate-pulse-scale" />
+                    <img src={gambar1} alt="gambar1" className="w-58 h-auto animate-pulse-scale" />
                 </div>
 
                 <div className="w-full text-center">
-                    <h1 className="whitespace-pre-line">{judul}</h1>
+                    <h1 className="whitespace-pre-line text-xl">{judul}</h1>
                 </div>
+
+                <div className="grow flex justify-center">
+                    <AutoSlider carousel={carousel}/>
+                </div>
+
                 <div className="flex w-full">
                     <Button className="flex-1 w-25 h-15 text-sm mx-2">Ucapan mas <br /> ke pean</Button>
                     <Button className="flex-1 w-25 h-15 text-sm mx-2">Momen kita</Button>
                     <Button className="flex-1 w-25 h-15 text-sm mx-2">Tulis <br />harapan pean!</Button>
-                </div>
-                <div className="grow flex justify-center">
-                    <img src={love} alt="love" className="w-full h-auto" />
                 </div>
                 {/* <Carousel className="w-100">
                     <CarouselContent>
