@@ -258,5 +258,10 @@
   .animate-pulse-scale {
     animation: pulse-scale 1.5s ease-in-out infinite;
   }
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.font-pixel {
+  font-family: 'Press Start 2P', cursive;
+}
 
 }

@@ -4,11 +4,17 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
 
+// Route::get('/', function () {
+//     return Inertia::render('welcome', [
+//         'canRegister' => Features::enabled(Features::registration()),
+//     ]);
+// })->name('home');
 Route::get('/', function () {
-    return Inertia::render('welcome', [
-        'canRegister' => Features::enabled(Features::registration()),
+    return Inertia::render('countdown', [
+        'deadline' => '2026-02-21T00:00:00'
+        // 'deadline' => '2026-02-18T15:59:00'
     ]);
-})->name('home');
+});
 
 Route::get('/coba', function () {
     $HBD = [
