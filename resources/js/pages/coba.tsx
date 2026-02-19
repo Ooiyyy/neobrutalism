@@ -44,22 +44,92 @@ export default function Coba({ HBD, gambar1, judul, carousel, kartuUcapan, gamba
                                 <h4 className="mb-4 text-lg leading-none font-heading">
                                     Lorem Ipsum
                                 </h4>
-                                {Array.from({ length: 10 }).map((_, index) => (
-                                    <p key={index} className="mb-4 leading-normal">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                        reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                        sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
-                                ))}
+                                {/* {Array.from({ length: 10 }).map((_, index) => ( */}
+                                <p>
+                                    Haaiiii, Selamat Ulang Tahun sayang, <br />
+                                    Semoga sehat selaluu,
+                                </p>
+                                {/* ))} */}
                             </div>
                         </DialogContent>
                     </Dialog>
-                    <Button className="flex-1 w-25 h-15 text-sm mx-2">Momen kita</Button>
-                    <Button className="flex-1 w-25 h-15 text-sm mx-2">Tulis <br />harapan pean!</Button>
+                    {/* Dialog gambar momen */}
+                    <Dialog>
+                        <DialogTrigger asChild>
+                            <Button className="flex-1 w-25 h-15 text-sm mx-2">
+                                Momen kita
+                            </Button>
+                        </DialogTrigger>
+
+                        <DialogContent className="max-w-sm p-0 border-4 border-black shadow-[8px_8px_0px_black] bg-white">
+
+                            {/* HEADER */}
+                            <DialogHeader className="px-4 pt-4">
+                                <DialogTitle className="text-base font-bold">
+                                    Momen Kita 💛
+                                </DialogTitle>
+
+                                <DialogDescription className="text-xs">
+                                    kenangan yang tidak bisa diulang :)
+                                </DialogDescription>
+                            </DialogHeader>
+
+                            {/* CAROUSEL */}
+                            <div className="px-4 pb-4 pt-2">
+                                <Carousel opts={{ loop: true }} className="w-full">
+                                    <CarouselContent>
+                                        {gambarMomen.map((url, i) => (
+                                            <CarouselItem key={i}>
+                                                <Card className="border-4 border-black shadow-[6px_6px_0px_black] overflow-hidden">
+                                                    <CardContent className="p-0">
+                                                        <img
+                                                            src={url}
+                                                            alt={`momen-${i}`}
+                                                            className="
+                                                                w-full
+                                                                h-64
+                                                                object-cover
+                                                                select-none
+                                                                "
+                                                        />
+                                                    </CardContent>
+                                                </Card>
+                                            </CarouselItem>
+                                        ))}
+                                    </CarouselContent>
+                                    {/* NAV BUTTON */}
+                                    <CarouselPrevious className="left-2 border-4 border-black bg-white shadow-[4px_4px_0px_black]" />
+                                    <CarouselNext className="right-2 border-4 border-black bg-white shadow-[4px_4px_0px_black]" />
+                                </Carousel>
+                            </div>
+                        </DialogContent>
+                    </Dialog>
+                    {/* dialog harapan */}
+                    <Dialog>
+                        <DialogTrigger asChild>
+                            {/* <Button>Scrollable Content</Button> */}
+                            <Button className="flex-1 w-25 h-15 text-sm mx-2">Tulis <br />harapan pean!</Button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-[425px]">
+                            <DialogHeader>
+                                <DialogTitle>Scrollable Content</DialogTitle>
+                                <DialogDescription>
+                                    This is a dialog with scrollable content.
+                                </DialogDescription>
+                            </DialogHeader>
+                            <div className="-mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
+                                <h4 className="mb-4 text-lg leading-none font-heading">
+                                    Lorem Ipsum
+                                </h4>
+                                {/* {Array.from({ length: 10 }).map((_, index) => ( */}
+                                <p>
+                                    Haaiiii, Selamat Ulang Tahun sayang, <br />
+                                    Semoga sehat selaluu,
+                                </p>
+                                {/* ))} */}
+                            </div>
+                        </DialogContent>
+                    </Dialog>
                 </div>
 
                 {/* <Carousel className="w-100">
