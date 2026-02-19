@@ -17,7 +17,7 @@ type Props = {
 export function AutoSlider({ carousel }: Props) {
     const plugin = React.useRef(
         AutoScroll({
-            speed: 1,
+            speed: 0.5,
             stopOnInteraction: false,
             stopOnMouseEnter: true,
             playOnInit: true,
@@ -31,26 +31,35 @@ export function AutoSlider({ carousel }: Props) {
         <Carousel
             opts={{ loop: true }}
             plugins={[plugin.current]}
-            className="w-full max-w-[12rem] sm:max-w-xs">
+            className="w-full max-w-[14rem] sm:max-w-xs"
+        >
             <CarouselContent>
-                {carousel.map((path, urutan) => (
-                    <CarouselItem key={urutan}>
-                        <div className="p-1">
-                            <Card>
-                                <CardContent className="flex aspect-square items-center justify-center p-6">
-                                    <img
-                                        src={path}
-                                        alt={`slide-${urutan}`}
-                                        className="w-full h-full object-cover"
-                                    />
-                                </CardContent>
-                            </Card>
-                        </div>
+
+                {carousel.map((path, i) => (
+                    <CarouselItem key={i}>
+
+                        <Card className="overflow-hidden border-4 border-black shadow-[6px_6px_0px_black]">
+
+                            <CardContent className="p-0">
+                                <img
+                                    src={path}
+                                    alt={`slide-${i}`}
+                                    className="
+                                        w-full
+                                        h-48
+                                        object-cover
+                                        select-none
+                                    "
+                                />
+                            </CardContent>
+
+                        </Card>
+
                     </CarouselItem>
                 ))}
+
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
         </Carousel>
+
     )
 }

@@ -4,10 +4,90 @@ import { Card, CardContent } from "@/components/ui/brutal/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/brutal/carousel";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/brutal/dialog";
 import Marquee from "@/components/ui/brutal/marquee";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { coba } from "@/types/coba";
+import { useEffect, useRef, useState } from "react";
+
+
+function Typewriter({ text }: { text: string }) {
+    const [displayed, setDisplayed] = useState("")
+
+    useEffect(() => {
+        let i = 0
+
+        const interval = setInterval(() => {
+            setDisplayed(text.slice(0, i + 1))
+            i++
+
+            if (i >= text.length) clearInterval(interval)
+        }, 40) // kecepatan ketik
+
+        return () => clearInterval(interval)
+    }, [text])
+
+    return (
+        <p className="whitespace-pre-line leading-relaxed">
+            {displayed}
+            <span className="animate-pulse">|</span>
+        </p>
+    )
+}
+function HarapanForm() {
+    const [text, setText] = useState("")
+
+    const nomorWA = "6281803558858" // GANTI nomor kamu (tanpa +)
+
+    const handleSend = () => {
+        if (!text.trim()) return
+
+        const pesan = encodeURIComponent(text)
+
+        const url = `https://wa.me/${nomorWA}?text=${pesan}`
+
+        window.open(url, "_blank")
+    }
+
+    return (
+        <div className="p-4 space-y-4">
+            <ScrollArea>
+                {/* INPUT */}
+                <textarea
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    placeholder="Tulis harapan pean di sini..."
+                    className="
+          w-full h-32
+          p-3
+          border-2 border-black
+          bg-white
+          shadow-[4px_4px_0px_black]
+          resize-none
+          text-sm
+        "
+                />
+            </ScrollArea>
+            {/* BUTTON KIRIM */}
+            <button
+                onClick={handleSend}
+                className="
+          w-full
+          py-3
+          font-bold
+          border-4 border-black
+          bg-green-400
+          shadow-[6px_6px_0px_black]
+          hover:translate-x-1 hover:translate-y-1 hover:shadow-none
+          transition-all
+        "
+            >
+                Kirim Harapan Pean!
+            </button>
+
+        </div>
+    )
+}
 
 export default function Coba({ HBD, gambar1, judul, carousel, kartuUcapan, gambarMomen, love }: coba) {
-
     return (
         <div className="bg-auto">
             <div>
@@ -30,27 +110,58 @@ export default function Coba({ HBD, gambar1, judul, carousel, kartuUcapan, gamba
                     {/* Dialog Ucapan */}
                     <Dialog>
                         <DialogTrigger asChild>
-                            {/* <Button>Scrollable Content</Button> */}
-                            <Button className="flex-1 w-25 h-15 text-sm mx-2">Ucapan mas <br /> ke pean</Button>
+                            <Button className="flex-1 w-25 h-15 text-sm mx-2">
+                                Ucapan mas <br /> ke pean
+                            </Button>
                         </DialogTrigger>
-                        <DialogContent className="sm:max-w-[425px]">
-                            <DialogHeader>
-                                <DialogTitle>Scrollable Content</DialogTitle>
-                                <DialogDescription>
-                                    This is a dialog with scrollable content.
+
+                        <DialogContent className="max-w-sm p-0 border-4 border-black shadow-[8px_8px_0px_black] bg-yellow-50">
+
+                            {/* HEADER */}
+                            <DialogHeader className="px-4 pt-4">
+                                <DialogTitle className="text-base font-bold">
+                                    Ucapan Mas ke Pean
+                                </DialogTitle>
+                                <DialogDescription className="text-xs">
+                                    baca pelan-pelan sambil di scroll ya sayang :)
                                 </DialogDescription>
                             </DialogHeader>
-                            <div className="-mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
-                                <h4 className="mb-4 text-lg leading-none font-heading">
-                                    Lorem Ipsum
-                                </h4>
-                                {/* {Array.from({ length: 10 }).map((_, index) => ( */}
-                                <p>
-                                    Haaiiii, Selamat Ulang Tahun sayang, <br />
-                                    Semoga sehat selaluu,
-                                </p>
-                                {/* ))} */}
+
+                            {/* KERTAS */}
+                            <div className="p-4">
+                                <div
+                                    className="
+                                    bg-white
+                                    border-2 border-black
+                                    shadow-[4px_4px_0px_black]
+                                    p-4
+                                    min-h-[200px]
+                                    text-sm
+                                    font-mono
+                                    "
+                                >
+                                    <ScrollArea className="h-[260px] p-4">
+                                        <Typewriter
+                                            text={`Selamat ulang tahun sayang❤️
+                                                Makasih udah kerja keras selama 19 tahun ini, makasih udah kuaat,
+                                                makasih selalu berjuang buat hubungan kita, makasih selalu ada buat mas :)
+                                                
+                                                Semoga kedepannya pean bisa buat semua orang bahagia sayang :), 
+                                                buktiin ke bapak ibu bahwa pean gapernah berhent mikirin biar mereka seneng dan bangga.
+                                                
+                                                Buktiin juga ke mas dan diri pean sendiri bahwa pean selalu berusaha buat jadi yang terbaik.
+                                                Semoga sayang bisa sukses, manfaat, sehat, bahagia, dan dapat mencapai cita cita pean.
+                                                
+                                                Semoga juga pean selalu diberi kelancaran dalam hal apapu, semoga kuliah pean lancar terus,
+                                                semoga sayang banyak rezeki.
+                                                
+                                                Mas buat ini dengan sebisa mas hehee, maap cuma ini yang bisa mas kasih. Semoga mas bisa kasih kado pean lain hari.
+                                                love you sayang :) <3.`}
+                                        />
+                                    </ScrollArea>
+                                </div>
                             </div>
+
                         </DialogContent>
                     </Dialog>
                     {/* Dialog gambar momen */}
@@ -70,7 +181,7 @@ export default function Coba({ HBD, gambar1, judul, carousel, kartuUcapan, gamba
                                 </DialogTitle>
 
                                 <DialogDescription className="text-xs">
-                                    kenangan yang tidak bisa diulang :)
+                                    Beberapa momen kita yang sempet kita abadikan :)
                                 </DialogDescription>
                             </DialogHeader>
 
@@ -104,70 +215,31 @@ export default function Coba({ HBD, gambar1, judul, carousel, kartuUcapan, gamba
                             </div>
                         </DialogContent>
                     </Dialog>
-                    {/* dialog harapan */}
+                    {/* Dialog Harapan */}
                     <Dialog>
                         <DialogTrigger asChild>
-                            {/* <Button>Scrollable Content</Button> */}
-                            <Button className="flex-1 w-25 h-15 text-sm mx-2">Tulis <br />harapan pean!</Button>
+                            <Button className="flex-1 w-25 h-15 text-sm mx-2">
+                                Tulis <br /> harapan pean!
+                            </Button>
                         </DialogTrigger>
-                        <DialogContent className="sm:max-w-[425px]">
-                            <DialogHeader>
-                                <DialogTitle>Scrollable Content</DialogTitle>
-                                <DialogDescription>
-                                    This is a dialog with scrollable content.
+
+                        <DialogContent className="max-w-sm p-0 border-4 border-black shadow-[8px_8px_0px_black] bg-yellow-50">
+
+                            <DialogHeader className="px-4 pt-4">
+                                <DialogTitle className="font-bold">
+                                    ✍️ Tulis Harapan
+                                </DialogTitle>
+
+                                <DialogDescription className="text-xs">
+                                    nanti langsung kekirim ke WA mas
                                 </DialogDescription>
                             </DialogHeader>
-                            <div className="-mx-6 max-h-[500px] overflow-y-auto px-6 text-sm">
-                                <h4 className="mb-4 text-lg leading-none font-heading">
-                                    Lorem Ipsum
-                                </h4>
-                                {/* {Array.from({ length: 10 }).map((_, index) => ( */}
-                                <p>
-                                    Haaiiii, Selamat Ulang Tahun sayang, <br />
-                                    Semoga sehat selaluu,
-                                </p>
-                                {/* ))} */}
-                            </div>
+
+                            <HarapanForm />
+
                         </DialogContent>
                     </Dialog>
                 </div>
-
-                {/* <Carousel className="w-100">
-                    <CarouselContent>
-                        {carousel.map((urlDariprops, urutan) =>
-                            <CarouselItem key={urutan}>
-                                <div className="p-[10px]">
-                                    <Card className="shadow-none p-0 bg-main text-main-foreground">
-                                        <CardContent className="flex aspect-square items-center justify-center p-4">
-                                            <img src={urlDariprops} alt={`carousel-${urutan}`} className="w-full h-50 object-cover"
-                                            />                                    </CardContent>
-                                    </Card>
-                                </div>
-                            </CarouselItem>
-                        )}
-                    </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
-                </Carousel>
-                <p>{kartuUcapan}</p>
-                <Carousel className="w-100">
-                    <CarouselContent>
-                        {gambarMomen.map((urlDariprops, urutan) =>
-                            <CarouselItem key={urutan}>
-                                <div className="p-[10px]">
-                                    <Card className="shadow-none p-0 bg-main text-main-foreground">
-                                        <CardContent className="flex aspect-square items-center justify-center p-4">
-                                            <img src={urlDariprops} alt={`carousel-${urutan}`} className="w-full h-50 object-cover"
-                                            />
-                                        </CardContent>
-                                    </Card>
-                                </div>
-                            </CarouselItem>
-                        )}
-                    </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
-                </Carousel> */}
             </div>
         </div>
     )

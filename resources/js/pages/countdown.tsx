@@ -34,11 +34,23 @@ export default function Countdown({ deadline }: Props) {
   const minutes = Math.floor((timeLeft / (1000 * 60)) % 60)
   const seconds = Math.floor((timeLeft / 1000) % 60)
 
-  const handleClick = () => {
-    if (expired) {
+  const handleClick = async () => {
+    if (!expired) return
+
+    const audio = new Audio("/music/music.mp3")
+    audio.volume = 0.5
+
+    try {
+      await audio.play()
+    } catch { }
+
+    localStorage.setItem("allowAudio", "1")
+
+    setTimeout(() => {
       router.visit("/coba")
-    }
+    }, 300)
   }
+
 
   return (
     <div
