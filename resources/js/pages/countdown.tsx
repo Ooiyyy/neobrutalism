@@ -62,6 +62,7 @@ export default function Countdown({ deadline }: Props) {
         px-4 text-center
         font-pixel
         cursor-pointer
+        text-black
       "
     >
       {/* BOX BRUTAL */}
@@ -76,9 +77,9 @@ export default function Countdown({ deadline }: Props) {
       >
         {!expired ? (
           <>
-            <h1 className="text-lg mb-6">Tunggu ya aayy....</h1>
+            <h1 className="text-sm mb-6">Tunggu ya aayy....</h1>
 
-            <div className="text-xl leading-loose">
+            <div className="text-sm leading-loose">
               {days}H {hours}J
               <br />
               {minutes}M {seconds}D

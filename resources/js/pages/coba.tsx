@@ -89,7 +89,7 @@ function HarapanForm() {
 
 export default function Coba({ HBD, gambar1, judul, carousel, kartuUcapan, gambarMomen, love }: coba) {
     return (
-        <div className="bg-auto">
+        <div className="min-h-screen w-full bg-pink-50 text-black">
             <div>
                 <Marquee items={HBD} />
             </div>
@@ -99,7 +99,9 @@ export default function Coba({ HBD, gambar1, judul, carousel, kartuUcapan, gamba
                 </div>
 
                 <div className="w-full text-center">
-                    <h1 className="whitespace-pre-line text-xl">{judul}</h1>
+                    <h1 className="whitespace-pre-line text-xs font-pixel">
+                        {judul}
+                    </h1>
                 </div>
 
                 <div className="grow flex justify-center">
@@ -115,14 +117,14 @@ export default function Coba({ HBD, gambar1, judul, carousel, kartuUcapan, gamba
                             </Button>
                         </DialogTrigger>
 
-                        <DialogContent className="max-w-sm p-0 border-4 border-black shadow-[8px_8px_0px_black] bg-yellow-50">
+                        <DialogContent className="max-w-sm p-0 border-4 border-black shadow-[8px_8px_0px_black] bg-yellow-50    text-black">
 
                             {/* HEADER */}
                             <DialogHeader className="px-4 pt-4">
                                 <DialogTitle className="text-base font-bold">
                                     Ucapan Mas ke Pean
                                 </DialogTitle>
-                                <DialogDescription className="text-xs">
+                                <DialogDescription className="text-xs text-black">
                                     baca pelan-pelan sambil di scroll ya sayang :)
                                 </DialogDescription>
                             </DialogHeader>
@@ -172,7 +174,7 @@ export default function Coba({ HBD, gambar1, judul, carousel, kartuUcapan, gamba
                             </Button>
                         </DialogTrigger>
 
-                        <DialogContent className="max-w-sm p-0 border-4 border-black shadow-[8px_8px_0px_black] bg-white">
+                        <DialogContent className="max-w-sm p-0 border-4 border-black shadow-[8px_8px_0px_black] bg-white text-black">
 
                             {/* HEADER */}
                             <DialogHeader className="px-4 pt-4">
@@ -180,7 +182,7 @@ export default function Coba({ HBD, gambar1, judul, carousel, kartuUcapan, gamba
                                     Momen Kita 💛
                                 </DialogTitle>
 
-                                <DialogDescription className="text-xs">
+                                <DialogDescription className="text-xs text-black">
                                     Beberapa momen kita yang sempet kita abadikan :)
                                 </DialogDescription>
                             </DialogHeader>
@@ -191,7 +193,7 @@ export default function Coba({ HBD, gambar1, judul, carousel, kartuUcapan, gamba
                                     <CarouselContent>
                                         {gambarMomen.map((url, i) => (
                                             <CarouselItem key={i}>
-                                                <Card className="border-4 border-black shadow-[6px_6px_0px_black] overflow-hidden">
+                                                <Card className="border-4 border-black shadow-[6px_6px_0px_black] overflow-hidden bg-rose-100">
                                                     <CardContent className="p-0">
                                                         <img
                                                             src={url}
@@ -223,14 +225,14 @@ export default function Coba({ HBD, gambar1, judul, carousel, kartuUcapan, gamba
                             </Button>
                         </DialogTrigger>
 
-                        <DialogContent className="max-w-sm p-0 border-4 border-black shadow-[8px_8px_0px_black] bg-yellow-50">
+                        <DialogContent className="max-w-sm p-0 border-4 border-black shadow-[8px_8px_0px_black] bg-white text-black">
 
                             <DialogHeader className="px-4 pt-4">
                                 <DialogTitle className="font-bold">
                                     ✍️ Tulis Harapan
                                 </DialogTitle>
 
-                                <DialogDescription className="text-xs">
+                                <DialogDescription className="text-xs text-black">
                                     nanti langsung kekirim ke WA mas
                                 </DialogDescription>
                             </DialogHeader>

@@ -11,8 +11,8 @@ use Laravel\Fortify\Features;
 // })->name('home');
 Route::get('/', function () {
     return Inertia::render('countdown', [
-        // 'deadline' => '2026-02-21T00:00:00'
-        'deadline' => '2026-02-19T13:02:00'
+        'deadline' => '2026-02-21T00:00:00'
+        // 'deadline' => '2026-02-19T13:02:00'
     ]);
 });
 

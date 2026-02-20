@@ -38,7 +38,7 @@ export function AutoSlider({ carousel }: Props) {
                 {carousel.map((path, i) => (
                     <CarouselItem key={i}>
 
-                        <Card className="overflow-hidden border-4 border-black shadow-[6px_6px_0px_black]">
+                        <Card className="overflow-hidden border-4 border-black shadow-[6px_6px_0px_black] bg-rose-100">
 
                             <CardContent className="p-0">
                                 <img
