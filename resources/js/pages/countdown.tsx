@@ -37,7 +37,7 @@ export default function Countdown({ deadline }: Props) {
   const handleClick = async () => {
     if (!expired) return
 
-    const audio = new Audio("/music/music.mp3")
+    const audio = new Audio("music/music.mp3")
     audio.volume = 0.5
 
     try {
@@ -47,7 +47,7 @@ export default function Countdown({ deadline }: Props) {
     localStorage.setItem("allowAudio", "1")
 
     setTimeout(() => {
-      router.visit("/coba")
+      router.visit("coba")
     }, 300)
   }
 
